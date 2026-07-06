@@ -5,7 +5,7 @@ import logging
 from fastapi import FastAPI
 
 from .config import get_settings
-from .routes import payments
+from .routes import payments, reports
 
 settings = get_settings()
 
@@ -21,6 +21,7 @@ app = FastAPI(
 )
 
 app.include_router(payments.router)
+app.include_router(reports.router)
 
 
 @app.get("/health", tags=["system"])
